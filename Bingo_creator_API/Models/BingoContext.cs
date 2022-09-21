@@ -9,7 +9,6 @@ namespace Bingo_creator_API.Models
 
         public DbSet<Bingo> Bingo { get; set; }
         public DbSet<Word> Words { get; set; }
-        public DbSet<User> Users { get; set; }
 
 
     }

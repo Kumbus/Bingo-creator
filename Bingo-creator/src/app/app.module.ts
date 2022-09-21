@@ -16,6 +16,8 @@ import { MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from './Components/toolbar/toolbar.component';
 import { AccountComponent } from './Components/account/account.component';
+import { BingoComponent } from './Components/bingo/bingo.component';
+import { AddWordsComponent } from './Components/add-words/add-words.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AccountComponent } from './Components/account/account.component';
     RegisterFormComponent,
     LoginFormComponent,
     ToolbarComponent,
-    AccountComponent
+    AccountComponent,
+    BingoComponent,
+    AddWordsComponent
   ],
   imports: [
     BrowserModule,

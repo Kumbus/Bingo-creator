@@ -7,6 +7,8 @@
         public int XPosition { get; set; }
         public int YPosition { get; set; }
 
-        public Bingo Bingo { get; set; }
+        public int? BingoId { get; set; }
+
+        public Bingo? Bingo { get; set; }
     }
 }
