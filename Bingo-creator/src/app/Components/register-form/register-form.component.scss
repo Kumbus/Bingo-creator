@@ -1,0 +1,37 @@
+.formContainer
+{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+
+}
+
+.mat-card
+{
+  background-color: rgba(156, 252, 248, 0.63);
+  margin-bottom: 50px;
+}
+
+
+.mat-form-field
+{
+  font-size: 30px;
+  display: grid;
+}
+
+.mat-card-title
+{
+  font-size: 40px;
+  margin: 15px;
+}
+
+.register
+{
+  align-self: flex-end;
+  font-size: 20px;
+  position: relative;
+  left: 60%;
+  background-color: rgba($color: #88f75d, $alpha: 1.0);
+}
+
+

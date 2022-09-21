@@ -23,7 +23,7 @@ namespace Bingo_creator_API.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<Object> AddUser(UserDTO userDto)
+        public async Task<object> AddUser(UserDTO userDto)
         {
             var user = new User()
             {
@@ -42,33 +42,33 @@ namespace Bingo_creator_API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("Register/{email}")]    
+        public async Task<object> GetUserToRegister([FromRoute] string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
 
+            if (user == null)
+                return Ok();
 
+            return BadRequest("nie ok");
+        }
 
+        [HttpGet]
+        [Route("login/{email}/{password}")]
+        public async Task<object> GetUserToLogin([FromRoute] string email, string password)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
 
+            if (user == null)
+                return BadRequest("Bad email");
 
+            if (_userManager.CheckPasswordAsync(user, password).Result)
+                return user;
 
+            return BadRequest("Wrong password");
 
-
-
-
-
-        //[HttpPost]
-        //public async Task<ActionResult> AddUser(UserDTO userDTO)
-        //{
-        //    User user = new User();
-
-
-
-        //    _context.Users.Add(user);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok();
-        //}
-
-    
-
-        
+        }
 
     }
 }

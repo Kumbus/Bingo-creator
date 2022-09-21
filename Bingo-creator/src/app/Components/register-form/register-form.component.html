@@ -1,0 +1,36 @@
+<div class="formContainer">
+  <mat-card>
+    <mat-card-title>Create new account</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" [value]="user.userName" placeholder="Nick" formControlName="nick" required>
+          <mat-error *ngIf="registerForm.controls['nick'].invalid">{{showNickErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" [value]="user.email" placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="registerForm.controls['email'].invalid">{{showEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" [value]="user.password" placeholder="Password" formControlName="password" required >
+          <mat-error *ngIf="registerForm.controls['password'].invalid">{{showPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" [value]="user.checkPassword" placeholder="Confirm password" formControlName="checkPassword" required>
+          <mat-error *ngIf="registerForm.controls['checkPassword'].invalid">{{showCheckPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-error *ngIf="errorMsg">{{errorMsg}}</mat-error>
+
+        <button mat-button type="submit" [disabled]="!registerForm.valid" class="register">Register</button>
+      </form>
+
+      
+
+
+    </mat-card-content>
+  </mat-card>
+</div>
