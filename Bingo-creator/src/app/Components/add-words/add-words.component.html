@@ -1,1 +1,13 @@
 <p>add-words works!</p>
+
+<form (ngSubmit)="addWord()">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Add word to your bingo</mat-label>
+        <div class="inputClass">
+            <input matInput [(ngModel)]="word.name" [ngModelOptions]="{standalone: true}">
+            <button mat-flat-button type="submit" [disabled]="!word.name">
+                <mat-icon>add_circle_outline</mat-icon>
+            </button>
+        </div>  
+    </mat-form-field>
+</form>

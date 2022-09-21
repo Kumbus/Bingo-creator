@@ -14,7 +14,6 @@ export class UserService {
 
   addUser(user: User)
   {
-    console.log(user)
     return this._http.post(`${this.apiUrl}/Register`,user);
   }
 
@@ -28,7 +27,5 @@ export class UserService {
     return this._http.get(`${this.apiUrl}/Login/${email}/${password}`).pipe(catchError((err) => throwError(() => err)))
   }
 
-  /*handleError(error: HttpErrorResponse) {
-    return throwError(() => new Error(error));
-}*/
+
 }
