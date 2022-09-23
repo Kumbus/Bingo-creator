@@ -20,6 +20,10 @@ import { BingoComponent } from './Components/bingo/bingo.component';
 import { AddWordsComponent } from './Components/add-words/add-words.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule} from'@angular/material/icon';
+import { MatTableModule } from'@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CdkTableModule } from '@angular/cdk/table';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { MatIconModule} from'@angular/material/icon';
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule    
+    MatIconModule,
+    MatTableModule,
+    MatGridListModule,
+    CdkTableModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
