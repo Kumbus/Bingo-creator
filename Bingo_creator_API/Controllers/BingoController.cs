@@ -32,7 +32,16 @@ namespace Bingo_creator_API.Controllers
             await _context.Bingo.AddAsync(bingo);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var newBingo = new BingoDTO()
+            {
+                Id = bingo.Id,
+                Name = bingo.Name,
+                Width = bingo.Width,
+                Height = bingo.Height,
+                UserId = bingo.UserId
+            };
+
+            return Ok(newBingo);
         }
     }
 }

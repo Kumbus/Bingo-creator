@@ -1,0 +1,40 @@
+.inputs
+{
+    display: flex;
+    font-size: large;
+    margin-top: 15px;;
+}
+
+form
+{
+    margin:5px;
+}
+
+
+.grid::before {
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  
+  .grid > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+
+ .mat-card
+ {
+    display: flex;              
+    justify-content: center;    
+    align-items: center;  
+ }
+
+ .createButton
+ {
+    color: rgb(255, 255, 255);
+    background-color: rgb(10, 143, 28);
+    align-self: center;
+    margin: 1%;
+ }
