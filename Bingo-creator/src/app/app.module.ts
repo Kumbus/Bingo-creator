@@ -24,6 +24,8 @@ import { MatTableModule } from'@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { QuestionDialogComponent } from './Components/question-dialog/question-dialog.component'
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     ToolbarComponent,
     AccountComponent,
     BingoComponent,
-    AddWordsComponent
+    AddWordsComponent,
+    QuestionDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatGridListModule,
     CdkTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

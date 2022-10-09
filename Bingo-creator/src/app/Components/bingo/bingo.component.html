@@ -2,25 +2,34 @@
     <form>
         <mat-form-field >
             <mat-label>Width</mat-label>
-            <input matInput type="number" [(ngModel)]="bingo.width" (ngModelChange)="onSizeChange()" [ngModelOptions]="{standalone: true}"> 
+            <input matInput type="number" min="1" [(ngModel)]="bingo.width" (ngModelChange)="onSizeChange()" [ngModelOptions]="{standalone: true}"> 
         </mat-form-field>
-    </form>
+    
 
-    <form>
+    
         <mat-form-field >
             <mat-label>Height</mat-label>
-            <input matInput type="number" [(ngModel)]="bingo.height" (ngModelChange)="onSizeChange()" [ngModelOptions]="{standalone: true}">
+            <input matInput type="number" min="1" [(ngModel)]="bingo.height" (ngModelChange)="onSizeChange()" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
+    
+    
+        <mat-form-field >
+            <mat-label>How many</mat-label>
+            <input matInput type="number" min="1" [(ngModel)]="howManyBingo" (ngModelChange)="onSizeChange()" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+    
     </form>
-
-    <button mat-stroked-button class="createButton">
+    <button mat-stroked-button class="createButton" (click)="askQuestion()">
         Create bingo
         <mat-icon>add_circle_outline</mat-icon>
     </button>
 </div>
+
+
 <div class="grid" [ngStyle]="getStyles()">
-    <mat-card *ngFor="let field of fields" >
-        {{field}}
+    <mat-card *ngFor="let field of fields;">
+        {{field.name}}
+        
     </mat-card>
 </div>
 
