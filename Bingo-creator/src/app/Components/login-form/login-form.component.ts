@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/Services/account.service';
 import { UserService } from '../../Services/user.service';
@@ -12,7 +13,8 @@ import { User } from '../../User';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private userService: UserService, private _router: Router, private accountService: AccountService) 
+  constructor(private fb: FormBuilder, private userService: UserService, private _router: Router,
+     private accountService: AccountService) 
   {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,13 +42,9 @@ export class LoginFormComponent implements OnInit {
     this.user.email = this.loginForm.controls['email'].value;
     this.user.password = this.loginForm.controls['password'].value;
 
-    this.userService.getUserToLogin(this.user.email, this.user.password).subscribe({
-      next: (data) => 
+    this.accountService.login(this.user).subscribe({
+      next: () => 
       {
-        this.user = data as User;
-        this.accountService.getUser(this.user);
-        this.accountService.isLogged = true;
-        this.accountService.changeButtonsStrings();
         this._router.navigate(['']);
       },
       error: () =>

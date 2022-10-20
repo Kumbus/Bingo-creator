@@ -19,7 +19,8 @@ namespace Bingo_creator_API.Controllers
         }
 
         [HttpPost]
-        public async Task<object> CreateBingo(BingoDTO bingoDto)
+        [Route("Main")]
+        public async Task<object> CreateMainBingo(BingoDTO bingoDto)
         {
             var bingo = new Bingo()
             {
@@ -38,10 +39,48 @@ namespace Bingo_creator_API.Controllers
                 Name = bingo.Name,
                 Width = bingo.Width,
                 Height = bingo.Height,
-                UserId = bingo.UserId
+                UserId = bingo.UserId,
             };
 
             return Ok(newBingo);
+        }
+
+        [HttpPost]
+        public async Task<object> CreateBingo(BingoDTO bingoDto)
+        {
+            var bingo = new Bingo()
+            {
+                Name = bingoDto.Name,
+                Width = bingoDto.Width,
+                Height = bingoDto.Height,
+                UserId = bingoDto.UserId,
+                MainBingoId = bingoDto.MainBingoId
+            };
+
+            await _context.Bingo.AddAsync(bingo);
+            await _context.SaveChangesAsync();
+
+            var newBingo = new BingoDTO()
+            {
+                Id = bingo.Id,
+                Name = bingo.Name,
+                Width = bingo.Width,
+                Height = bingo.Height,
+                UserId = bingo.UserId,
+                MainBingoId = bingo.MainBingoId
+            };
+
+            return Ok(newBingo);
+        }
+
+        [HttpGet]
+        [Route("Summary/{id}")]
+        public async Task<object> GetBingoToSummary(int id)
+        {
+            List<Bingo> bingo = new List<Bingo>();
+            bingo = await _context.Bingo.Where(b => b.MainBingoId == id).ToListAsync();
+
+            return Ok(bingo);
         }
     }
 }

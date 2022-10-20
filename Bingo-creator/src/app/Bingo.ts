@@ -4,6 +4,7 @@ export interface Bingo
   name: string,
   height: number,
   width: number,
-  userId: string | null
+  userId: string | null | undefined,
+  mainBingoId: number | null
 
 }

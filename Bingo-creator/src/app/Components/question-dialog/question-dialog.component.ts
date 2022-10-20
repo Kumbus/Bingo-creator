@@ -13,8 +13,12 @@ export class QuestionDialogComponent implements OnInit {
 
   questionString: string = ""
 
+  isLogged!: boolean
+
   ngOnInit(): void {
-    if(this.accountService.isLogged)
+
+    this.accountService.isLoggedIn.subscribe((loggedIn) => this.isLogged = loggedIn)
+    if(this.isLogged)
       this.questionString = "Would you like to save this bingo?";
     else  
       this.questionString = "You are not logged in. Would you like to log in and have a possibility to save?"

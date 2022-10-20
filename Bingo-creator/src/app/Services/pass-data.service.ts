@@ -17,7 +17,6 @@ export class PassDataService {
   //currentWords = this.wordsSource.asObservable();
   changeWords(words: Word[]) 
   {
-    console.log(words)
     this.wordsSource.next(words)
     
   }

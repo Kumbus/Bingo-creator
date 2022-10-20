@@ -13,7 +13,7 @@ import { LoginFormComponent } from './Components/login-form/login-form.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToolbarComponent } from './Components/toolbar/toolbar.component';
 import { AccountComponent } from './Components/account/account.component';
 import { BingoComponent } from './Components/bingo/bingo.component';
@@ -25,7 +25,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { QuestionDialogComponent } from './Components/question-dialog/question-dialog.component'
+import { QuestionDialogComponent } from './Components/question-dialog/question-dialog.component';
+import { LoginDialogComponent } from './Components/login-dialog/login-dialog.component';
+import { BingoSummaryComponent } from './Components/bingo-summary/bingo-summary.component'
+import { AuthInterceptor } from './Services/auth.interceptor';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { QuestionDialogComponent } from './Components/question-dialog/question-d
     AccountComponent,
     BingoComponent,
     AddWordsComponent,
-    QuestionDialogComponent
+    QuestionDialogComponent,
+    LoginDialogComponent,
+    BingoSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,7 @@ import { QuestionDialogComponent } from './Components/question-dialog/question-d
     FlexLayoutModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

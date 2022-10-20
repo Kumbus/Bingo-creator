@@ -17,18 +17,18 @@ export class ToolbarComponent implements OnInit {
     return this.accountService.secondButtonString
   }
 
-  get isLogged(){
-    return this.accountService.isLogged
-  }
+  isLogged!: boolean;
 
-  constructor(private accountService: AccountService, private _router: Router) { }
+  constructor(private accountService: AccountService, private _router: Router) 
+  {
+    accountService.isLoggedIn.subscribe((_isLogged) => this.isLogged = _isLogged);
+   }
 
   ngOnInit(): void { 
   }
 
   firstButtonClick()
   {
-    console.log(this.isLogged)
     if(!this.isLogged)
       this._router.navigate(['login'])
     else
@@ -41,8 +41,7 @@ export class ToolbarComponent implements OnInit {
       this._router.navigate(['register'])
     else
       {
-        this.accountService.isLogged = false;
-        this.accountService.changeButtonsStrings();
+        this.accountService.logOut();
       }
   }
 

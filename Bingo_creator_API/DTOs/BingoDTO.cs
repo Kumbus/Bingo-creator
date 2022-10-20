@@ -7,5 +7,7 @@
         public int Height { get; set; }
         public int Width { get; set; }
         public string? UserId { get; set; }
+
+        public int? MainBingoId { get; set; }
     }
 }

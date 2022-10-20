@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { User } from '../User';
-import { catchError, throwError } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
 
   constructor(private readonly _http: HttpClient) { }
 
@@ -22,10 +24,9 @@ export class UserService {
     return this._http.get(`${this.apiUrl}/Register/${email}`).pipe(catchError((err) => throwError(() => err)))
   }
 
-  getUserToLogin(email: any, password: any)
+  login(user: User)
   {
-    return this._http.get(`${this.apiUrl}/Login/${email}/${password}`).pipe(catchError((err) => throwError(() => err)))
+    return this._http.post(`${this.apiUrl}/Login`,user, {responseType: 'text'}).pipe(catchError((err) => throwError(() => err)))
   }
-
 
 }
